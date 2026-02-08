@@ -19,42 +19,42 @@ concentration bounds.
 |--------------|--------------|--------|
 | Def 2.1 (DAG) | `FinDAG` | Defined |
 | Def 3.1 (Topological ordering) | `TopologicalOrdering` | Defined |
-| Def 2.4 (DAG-specific Q_n) | `dagCarberyFunctional` | Defined |
-| Def 2.4 (Root form Q_n^{1/(n+1)}) | `dagCarberyRoot` | Defined |
-| Prop 3.3 (Test validity: T_h ≤ 1) | `testStatistic_le_one_of_markov` | **Proved** (via `dagCarberyInequality`) |
-| Prop 3.3 (Ordered Carbery ineq.) | `dagCarberyInequality` | sorry (bridge lemma) |
-| Prop 4.1 (Admissible test functions) | `admissible_of_ennreal` | **Proved** |
-| Prop 4.3 (Combined test validity) | `combinedTest_le_one_of_markov` | **Proved** (via 3.3) |
-| Prop 6.3 (MI-equivalence) | `mi_equivalent_implies_same_functional` | **Proved** (by def) |
+| Def 3.3 (DAG functional Q_n^G) | `dagCarberyFunctional` | Defined |
+| Def 3.3 (Root form Q_n^{1/(n+1)}) | `dagCarberyRoot` | Defined |
+| Prop 3.8 (Validity: T_h ≤ 1) | `testStatistic_le_one_of_markov` | **Proved** (via `dagCarberyInequality`) |
+| Prop 3.8 (Ordered Carbery ineq.) | `dagCarberyInequality` | **Proved** (via `JointPMF.permute` + `Equiv.piCongrLeft`) |
+| Def 4.1 (Test statistic) | `testStatistic` | Defined |
+| Prop 4.3 (Admissible test functions) | `admissible_of_ennreal` | **Proved** |
+| Def 4.6 (Combined test statistic) | `combinedTestStatistic` | Defined |
+| Prop 4.7 (Combined test validity) | `combinedTest_le_one_of_markov` | **Proved** (via Prop 3.8) |
 | Thm 6.1 (T·Q ratio identity) | `test_statistic_ratio` | **Proved** |
 | Thm 6.1§2 (Power direction) | `power_direction_strict` | **Proved** |
 | Thm 6.1§3 (No false rejection) | `power_no_rejection` | **Proved** |
+| Def 6.5 (MI-equivalent DAGs) | `MIEquivalent` | Defined |
+| Prop 6.6 (MI-equivalence) | `mi_equivalent_implies_same_functional` | **Proved** (by def) |
 | Numerical: Q₃^chain ≠ Q₃^fork | `chain_fork_Q4_ne` | **Proved** |
 | Numerical: Q₃^chain > Q₃^fork | `chain_Q4_gt_fork_Q4` | **Proved** |
 | Marginal sufficiency (DAG) | `dagCarberyFunctional_marginal_sufficiency` | **Proved** |
 | Bivariate marginal summation | `bivariateAny_sum_snd` | **Proved** |
 | Consecutive pair equivalence | `bivariateAny_eq_bivariateMarginai` | **Proved** |
+| Topological ordering existence | `topologicalOrdering_exists` | **Proved** (via ranking function) |
 
 ## Axioms and Sorry Count
+
+**Sorry count: 0** — all theorems in this library are fully proved.
 
 **Inherited axiom** (from CarberyVersionA):
 - `carberyInequality`: Carbery's multilinear Cauchy-Schwarz (established result)
 
-**Sorry in this library** (2 total):
-- `topologicalOrdering_exists`: General existence of topological orderings
-  (concrete instances for chain3, fork3, collider3, independent3, diamond4
-  are all fully proved)
-- `dagCarberyInequality`: Ordered Carbery inequality (bridge lemma).
-  States that under the Markov assumption, E[∏ hᵢ] ≤ dagCarberyRoot · ∏ ‖hᵢ‖.
-  Requires constructing the permuted JointPMF p_π (via Equiv.piCongrLeft)
-  and applying carberyInequality to it. Mathematically a direct consequence
-  of carberyInequality, but technically involved due to type-level permutation.
-
 **Fully proved** (no sorry):
 - All concrete DAG instances and their topological orderings
 - All numerical computations (chain vs. fork discrimination)
-- Test validity under H₀: testStatistic_le_one_of_markov (Prop 3.3)
-- Combined test validity: combinedTest_le_one_of_markov (Prop 4.3)
+- Topological ordering existence: `topologicalOrdering_exists`
+  (via ranking function from height encoding g(i) = n · f(i) + i)
+- Ordered Carbery inequality: `dagCarberyInequality`
+  (via `JointPMF.permute` + `Equiv.piCongrLeft`)
+- Test validity under H₀: `testStatistic_le_one_of_markov` (Prop 3.8)
+- Combined test validity: `combinedTest_le_one_of_markov` (Prop 4.7)
 - Admissible test function characterization
 - DAG marginal sufficiency
 - Bivariate marginal summation and consecutive pair equivalence
@@ -68,7 +68,7 @@ concentration bounds.
 - `TopologicalOrdering.lean`: Orderings, existence, concrete orderings
 - `DagFunctional.lean`: DAG-specific Q_n, Markov factorization, marginal sufficiency
 - `TestStatistic.lean`: Test statistic definition, admissibility, combined test
-- `OrderingValidity.lean`: Test validity under H₀ (Prop 3.3)
+- `OrderingValidity.lean`: Test validity under H₀ (Prop 3.8)
 - `PowerAnalysis.lean`: MI-equivalence, power direction (Thm 6.1)
 - `NumericalExamples.lean`: Machine-checked chain vs. fork discrimination
 

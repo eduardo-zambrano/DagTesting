@@ -15,14 +15,15 @@ characterization and the power direction theorems.
 
 ## Main results
 
-* `mi_equivalent_iff_same_bivariates`: MI-equivalence characterization (Prop 6.3)
+* `mi_equivalent_iff_same_bivariates`: MI-equivalence characterization (Prop 6.6)
 * `power_direction_strict`: Power direction theorem (Thm 6.1§2)
 * `power_no_rejection`: No rejection when Q₀ ≥ Q₁ (Thm 6.1§3)
 
 ## Paper reference
 
-* Proposition 6.3 (MI-equivalence) in Zambrano (2026)
-* Theorem 6.1 (Power direction) in Zambrano (2026)
+* Definition 6.5 (MI-equivalent DAGs) in Zambrano (2026)
+* Proposition 6.6 (MI-equivalence characterization) in Zambrano (2026)
+* Theorem 6.1 (Power characterization) in Zambrano (2026)
 -/
 
 import DagTesting.OrderingValidity
@@ -45,7 +46,7 @@ orderings. This means the test cannot discriminate between them.
 /-- Two DAGs are MI-equivalent if they give the same Carbery functional
     for all joint distributions and valid orderings.
 
-    Paper reference: Definition before Proposition 6.3. -/
+    Paper reference: Definition 6.5. -/
 def MIEquivalent (G₁ G₂ : FinDAG n) : Prop :=
   ∀ (p : JointPMF Ω) (hn : n ≥ 1)
     (π₁ : TopologicalOrdering G₁) (π₂ : TopologicalOrdering G₂),
@@ -59,7 +60,7 @@ theorem MIEquivalent.symm {G₁ G₂ : FinDAG n} (h : MIEquivalent (Ω := Ω) G�
 /-!
 ## MI-Equivalence Characterization
 
-Proposition 6.3: G₁ and G₂ are MI-equivalent if and only if they imply
+Proposition 6.6: G₁ and G₂ are MI-equivalent if and only if they imply
 the same consecutive bivariate marginals for all valid orderings.
 
 The forward direction is immediate from the definition of Q_n^G.
@@ -75,7 +76,7 @@ def SameBivariateStructure (G₁ G₂ : FinDAG n) : Prop :=
     p.sameDagMarginals p hn π₂ →
     dagCarberyFunctional hn G₁ p π₁ = dagCarberyFunctional hn G₂ p π₂
 
-/-- **MI-Equivalence Characterization** (Proposition 6.3, forward direction):
+/-- **MI-Equivalence Characterization** (Proposition 6.6, forward direction):
     MI-equivalent DAGs have the same Carbery functional for all distributions.
 
     This is true by definition. -/

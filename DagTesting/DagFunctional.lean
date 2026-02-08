@@ -21,7 +21,7 @@ concepts, building on the core Carbery functional from CarberyVersionA.
 
 ## Paper reference
 
-* Definition 2.4 (DAG-specific Q_n) in Zambrano (2026)
+* Definition 3.3 (DAG functional Q_n^G) in Zambrano (2026)
 * Section 3 (Theory) in Zambrano (2026)
 -/
 
@@ -113,7 +113,7 @@ theorem perm_consecutive_ne {n : ℕ} (π : Equiv.Perm (Fin n))
     this is the Carbery functional using bivariate marginals determined
     by the consecutive pairs under ordering π.
 
-    Paper reference: Definition 2.4 (adapted to DAG setting). -/
+    Paper reference: Definition 3.3 (DAG functional). -/
 def dagCarberyFunctional (hn : n ≥ 1) (G : FinDAG n) (p : JointPMF Ω)
     (π : TopologicalOrdering G) : ℝ≥0∞ :=
   ∑ s : ∀ i, Ω i,
@@ -185,7 +185,8 @@ def JointPMF.sameDagMarginals (p q : JointPMF Ω) (hn : n ≥ 1)
 /-- **DAG Marginal Sufficiency**: The DAG Carbery functional depends only
     on boundary marginals and ordering-determined bivariate marginals.
 
-    Paper reference: Proposition 6.1 (generalized). -/
+    Paper reference: Follows from Definition 3.3 (the functional depends on
+    boundary marginals and bivariate marginals by construction). -/
 theorem dagCarberyFunctional_marginal_sufficiency (hn : n ≥ 1)
     {G : FinDAG n} (π : TopologicalOrdering G) (p q : JointPMF Ω)
     (h : p.sameDagMarginals q hn π) :

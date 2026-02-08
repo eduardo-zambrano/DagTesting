@@ -17,8 +17,8 @@ DAG structures using the Carbery functional.
 ## Paper reference
 
 * Definition 4.1 (Test statistic) in Zambrano (2026)
-* Proposition 4.1 (Admissible test functions) in Zambrano (2026)
-* Proposition 4.3 (Combined test) in Zambrano (2026)
+* Proposition 4.3 (Admissible test function classes) in Zambrano (2026)
+* Proposition 4.7 (Combined test validity) in Zambrano (2026)
 -/
 
 import DagTesting.DagFunctional
@@ -39,7 +39,7 @@ This is the key admissibility condition.
 
 /-- A family of test functions is admissible if each function is nonnegative.
 
-    Paper reference: Proposition 4.1. -/
+    Paper reference: Proposition 4.3. -/
 def AdmissibleTestFunction (h : ∀ i : Fin n, Ω i → ℝ≥0∞) : Prop :=
   ∀ i s, h i s ≥ 0
 
@@ -93,7 +93,7 @@ If any single test rejects, the combined test rejects.
 /-- The combined test statistic over a finite set of test functions.
     T_max = max_k T_{h^(k)}
 
-    Paper reference: Proposition 4.3. -/
+    Paper reference: Proposition 4.7. -/
 def combinedTestStatistic (hn : n ≥ 1) (G : FinDAG n) (p : JointPMF Ω)
     (π : TopologicalOrdering G) {K : ℕ}
     (hs : Fin K → (∀ i : Fin n, Ω i → ℝ≥0∞)) : ℝ≥0∞ :=

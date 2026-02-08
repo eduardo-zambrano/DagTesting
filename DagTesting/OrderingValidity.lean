@@ -11,8 +11,8 @@ for any admissible test function h and valid topological ordering π.
 
 ## Main results
 
-* `testStatistic_le_one_of_markov`: T_h ≤ 1 under H₀ (Proposition 3.3)
-* `combinedTest_le_one_of_markov`: T_max ≤ 1 under H₀ (Proposition 4.3)
+* `testStatistic_le_one_of_markov`: T_h ≤ 1 under H₀ (Proposition 3.8)
+* `combinedTest_le_one_of_markov`: T_max ≤ 1 under H₀ (Proposition 4.7)
 
 ## Proof strategy
 
@@ -25,8 +25,8 @@ which is exactly T_h ≤ 1.
 
 ## Paper reference
 
-* Proposition 3.3 (Test validity) in Zambrano (2026)
-* Proposition 4.3 (Combined test validity) in Zambrano (2026)
+* Proposition 3.8 (Validity across orderings) in Zambrano (2026)
+* Proposition 4.7 (Combined test validity) in Zambrano (2026)
 -/
 
 import DagTesting.TestStatistic
@@ -196,7 +196,7 @@ theorem dagCarberyInequality (hn : n ≥ 1) (G : FinDAG n) (p : JointPMF Ω)
   simp only [carberyFunctional, dagCarberyRoot]
   rw [functional_eq, norms_eq]
 
-/-- **Test Validity** (Proposition 3.3): Under H₀ (p is Markov for G),
+/-- **Test Validity** (Proposition 3.8): Under H₀ (p is Markov for G),
     T_h^{G,π}(p) ≤ 1 for any admissible test function h.
 
     This is the fundamental validity guarantee of the DAG test.
@@ -209,7 +209,7 @@ theorem dagCarberyInequality (hn : n ≥ 1) (G : FinDAG n) (p : JointPMF Ω)
     4. Carbery's inequality gives: E[∏ hᵢ] ≤ dagCarberyRoot · ∏ ‖hᵢ‖
     5. Dividing both sides by dagCarberyRoot · ∏ ‖hᵢ‖ gives T_h ≤ 1
 
-    Paper reference: Proposition 3.3. -/
+    Paper reference: Proposition 3.8. -/
 theorem testStatistic_le_one_of_markov (hn : n ≥ 1)
     (G : FinDAG n) (p : JointPMF Ω) (hp : p.IsMarkovDAG G)
     (π : TopologicalOrdering G) (h : ∀ i : Fin n, Ω i → ℝ≥0∞) :
@@ -217,13 +217,13 @@ theorem testStatistic_le_one_of_markov (hn : n ≥ 1)
   apply ennreal_div_le_one_of_le
   exact dagCarberyInequality hn G p hp π h
 
-/-- **Combined Test Validity** (Proposition 4.3): Under H₀,
+/-- **Combined Test Validity** (Proposition 4.7): Under H₀,
     T_max = max_k T_{h^(k)} ≤ 1 for any finite collection of
     admissible test functions.
 
     This follows immediately from per-test validity.
 
-    Paper reference: Proposition 4.3. -/
+    Paper reference: Proposition 4.7. -/
 theorem combinedTest_le_one_of_markov (hn : n ≥ 1)
     (G : FinDAG n) (p : JointPMF Ω) (hp : p.IsMarkovDAG G)
     (π : TopologicalOrdering G) {K : ℕ}
