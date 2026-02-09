@@ -16,7 +16,7 @@ rev = "v4.24.0"
 
 [[require]]
 name = "CarberyVersionA"
-path = "../Carbery_Probabilistic_A/CarberyVersionA"
+path = "../../Carbery_Probabilistic_A/CarberyVersionA"
 
 [[lean_lib]]
 name = "DagTesting"

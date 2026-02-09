@@ -6,7 +6,7 @@
    "name": "CarberyVersionA",
    "manifestFile": "lake-manifest.json",
    "inherited": false,
-   "dir": "../Carbery_Probabilistic_A/CarberyVersionA",
+   "dir": "../../Carbery_Probabilistic_A/CarberyVersionA",
    "configFile": "lakefile.toml"},
   {"url": "https://github.com/leanprover-community/mathlib4",
    "type": "git",
