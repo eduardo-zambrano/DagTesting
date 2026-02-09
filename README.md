@@ -38,6 +38,13 @@ A Lean 4 formalization of key results from "Testing Causal DAG Structures via Mo
 | **Numerical Discrimination** | | | |
 | Q_3^chain != Q_3^fork | `chain_fork_Q4_ne` | `NumericalExamples.lean` | **Proved** |
 | Q_3^chain > Q_3^fork | `chain_Q4_gt_fork_Q4` | `NumericalExamples.lean` | **Proved** |
+| **Bootstrap & Stability** | | | |
+| Theorem 5.3 (Bootstrap validity) | `bootstrap_validity` | `BootstrapValidity.lean` | **Proved** |
+| Theorem 5.3 (Markov iff factorization) | `isMarkovDAG_iff_exists_factorization` | `BootstrapValidity.lean` | **Proved** |
+| Proposition 6.2 (SubDAG test validity) | `testStatistic_le_one_of_subDAG_markov` | `PowerAnalysis.lean` | **Proved** |
+| Proposition 7.4 (Q_n monotonicity) | `dagCarberyFunctional_mono` | `QnStability.lean` | **Proved** |
+| Proposition 7.4 (Q_n boundedness) | `dagCarberyFunctional_le_card` | `QnStability.lean` | **Proved** |
+| Proposition 7.4 (Q_n continuity) | `dagCarberyFunctional_continuous_in_marginals` | `QnStability.lean` | **Proved** |
 
 ## Project Structure
 
@@ -52,6 +59,8 @@ DagTesting/
     OrderingValidity.lean      -- Test validity under H_0 (T_h <= 1)
     PowerAnalysis.lean         -- MI-equivalence, power direction (Theorem 6.1)
     NumericalExamples.lean     -- Machine-checked chain vs. fork discrimination
+    BootstrapValidity.lean     -- Bootstrap validity: factorization implies Markov (Thm 5.3)
+    QnStability.lean           -- Q_n stability, monotonicity, boundedness (Prop 7.4)
 ```
 
 ## Dependencies
@@ -81,7 +90,7 @@ All other results are proved from this axiom and standard Mathlib.
 
 ## Relationship to Paper Formulation
 
-The Lean formalization uses the **Lebesgue (counting-measure) form** of Carbery's inequality (Theorem 2.7 in the paper), where norms are Lebesgue $L^{n+1}$ norms: $\|f_i\|_{L^{n+1}} = (\int |f_i|^{n+1}\, dx)^{1/(n+1)}$. The paper's test statistic (Definition 4.1) is defined using the **probability-measure (expectation) form** (Corollary 2.10), which includes a density correction factor $\prod_i p_i(X_i)^{1/(n+1)}$ in the numerator and uses $(\mathbb{E}[h_i^{n+1}])^{1/(n+1)}$ in the denominator. These two forms are equivalent via the substitution $f_i = g_i \cdot p_i^{1/(n+1)}$ (Definition 2.8 and Lemma 2.9 in the paper). The expectation form is more natural for statistical applications, while the Lebesgue form is more natural for the Lean formalization over finite state spaces with counting measure.
+The Lean formalization uses the **Lebesgue (counting-measure) form** of Carbery's inequality (Theorem 2.7 in the paper), where norms are Lebesgue $L^{n+1}$ norms: $\|f_i\|_{L^{n+1}} = (\int |f_i|^{n+1}\, dx)^{1/(n+1)}$. The paper's test statistic (Definition 4.1) is defined using the **probability-measure (expectation) form** (Corollary 2.11), which includes a density correction factor $\prod_i p_i(X_i)^{1/(n+1)}$ in the numerator and uses $(\mathbb{E}[h_i^{n+1}])^{1/(n+1)}$ in the denominator. These two forms are equivalent via the substitution $f_i = g_i \cdot p_i^{1/(n+1)}$ (Definition 2.9 and Lemma 2.10 in the paper). The expectation form is more natural for statistical applications, while the Lebesgue form is more natural for the Lean formalization over finite state spaces with counting measure.
 
 ## Key Result Highlights
 
