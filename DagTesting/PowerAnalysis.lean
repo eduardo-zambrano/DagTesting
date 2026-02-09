@@ -190,22 +190,22 @@ theorem power_no_rejection (hn : n ≥ 1)
     _ ≤ 1 := hT₁
 
 /-!
-## SubDAG Test Validity (Proposition 6.3)
+## SubDAG Test Validity (Proposition 6.2)
 
 If the true causal structure G₁ is a sub-DAG of the tested DAG G₂
 (i.e., G₂ has all edges of G₁ plus possibly more), then the test
-for G₂ is valid. This is the finite-case analog of Proposition 6.3.
+for G₂ is valid. This is the finite-case analog of Proposition 6.2.
 -/
 
 /-- **Test validity under sub-DAG Markov**: if p is Markov w.r.t. a
     sub-DAG G₁ ⊆ G₂, then the test for G₂ is valid (T ≤ 1).
 
-    This captures the structural core of Proposition 6.3: testing a DAG G₂
+    This captures the structural core of Proposition 6.2: testing a DAG G₂
     that contains all edges of the true DAG G₁ is always valid. The converse
     (power for detecting missing edges) follows from `power_direction_strict`
     when the Q_n values differ under different orderings.
 
-    Paper reference: Proposition 6.3 (monotonicity in edge density). -/
+    Paper reference: Proposition 6.2 (monotonicity in edge density). -/
 theorem testStatistic_le_one_of_subDAG_markov (hn : n ≥ 1)
     {G₁ G₂ : FinDAG n} (hsub : G₁.IsSubDAG G₂)
     (p : JointPMF Ω) (hp : p.IsMarkovDAG G₁)

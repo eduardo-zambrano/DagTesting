@@ -129,7 +129,7 @@ theorem topologicalOrdering_exists {n : ℕ} (G : FinDAG n) :
     of G₂ is also valid for G₁. More edges means more ordering constraints,
     so G₁'s valid orderings are a superset of G₂'s.
 
-    Paper reference: Supports Proposition 6.3 (edge density monotonicity). -/
+    Paper reference: Supports Proposition 6.2 (edge density monotonicity). -/
 def topologicalOrdering_of_subDAG {n : ℕ} {G₁ G₂ : FinDAG n}
     (h : G₁.IsSubDAG G₂) (π : TopologicalOrdering G₂) :
     TopologicalOrdering G₁ :=

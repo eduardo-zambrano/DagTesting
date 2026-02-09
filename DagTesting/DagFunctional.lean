@@ -222,7 +222,7 @@ theorem dagCarberyFunctional_marginal_sufficiency (hn : n ≥ 1)
 ## SubDAG Properties
 
 Properties of the Markov factorization and Carbery functional under sub-DAG
-relationships. These formalize the structural content of Proposition 6.3
+relationships. These formalize the structural content of Proposition 6.2
 (monotonicity in edge density).
 -/
 
@@ -271,7 +271,7 @@ theorem dagCarberyRoot_eq_of_perm_eq (hn : n ≥ 1)
     If G₁ ⊆ G₂ and π is a valid ordering for G₂, then the functional
     values for G₁ and G₂ under the corresponding orderings are equal.
 
-    Paper reference: Proposition 6.3 (functional depends on ordering, not DAG). -/
+    Paper reference: Proposition 6.2 (functional depends on ordering, not DAG). -/
 theorem dagCarberyFunctional_subDAG_eq {G₁ G₂ : FinDAG n}
     (hsub : G₁.IsSubDAG G₂) (hn : n ≥ 1) (p : JointPMF Ω)
     (π₂ : TopologicalOrdering G₂) :

@@ -93,7 +93,7 @@ If any single test rejects, the combined test rejects.
 /-- The combined test statistic over a finite set of test functions.
     T_max = max_k T_{h^(k)}
 
-    Paper reference: Proposition 4.7. -/
+    Paper reference: Definition 4.6 / Proposition 4.7. -/
 def combinedTestStatistic (hn : n ≥ 1) (G : FinDAG n) (p : JointPMF Ω)
     (π : TopologicalOrdering G) {K : ℕ}
     (hs : Fin K → (∀ i : Fin n, Ω i → ℝ≥0∞)) : ℝ≥0∞ :=

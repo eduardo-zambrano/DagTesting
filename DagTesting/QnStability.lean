@@ -31,7 +31,7 @@ For finite state spaces (our formalization setting), this concern simplifies:
 
 ## Paper reference
 
-* Proposition 7.5 (Q_n convergence rate) in Zambrano (2026)
+* Proposition 7.4 (Q_n stability) in Zambrano (2026)
 * Section 7 (Computation) in Zambrano (2026)
 -/
 
