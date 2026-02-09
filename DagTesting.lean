@@ -44,6 +44,11 @@ concentration bounds.
 | Prop 7.5 (Q_n monotonicity) | `dagCarberyFunctional_mono` | **Proved** |
 | Prop 7.5 (Q_n boundedness) | `dagCarberyFunctional_le_card` | **Proved** |
 | Root form stability | `dagCarberyRoot_continuous_in_marginals` | **Proved** |
+| SubDAG ordering inheritance | `topologicalOrdering_of_subDAG` | **Proved** |
+| SubDAG Markov inheritance | `isMarkovDAG_of_subDAG` | **Proved** |
+| Q_n depends only on ordering | `dagCarberyFunctional_eq_of_perm_eq` | **Proved** |
+| Q_n preserved under SubDAG | `dagCarberyFunctional_subDAG_eq` | **Proved** |
+| Prop 6.3 (SubDAG test validity) | `testStatistic_le_one_of_subDAG_markov` | **Proved** |
 
 ## Axioms and Sorry Count
 
@@ -69,15 +74,17 @@ concentration bounds.
 - No false rejection theorem (Thm 6.1§3)
 - Bootstrap validity: product-of-conditionals is Markov (Thm 5.3 core)
 - Q_n stability: monotonicity, boundedness, continuity (Prop 7.5)
+- SubDAG: ordering inheritance, Markov inheritance, Q_n preservation (Prop 6.3)
+- Test validity under super-DAG of true structure (Prop 6.3)
 
 ## Files
 
 - `DAGBasic.lean`: DAG definitions, parent/child sets, concrete instances
-- `TopologicalOrdering.lean`: Orderings, existence, concrete orderings
-- `DagFunctional.lean`: DAG-specific Q_n, Markov factorization, marginal sufficiency
+- `TopologicalOrdering.lean`: Orderings, existence, SubDAG inheritance, concrete orderings
+- `DagFunctional.lean`: DAG-specific Q_n, Markov factorization, marginal sufficiency, SubDAG properties
 - `TestStatistic.lean`: Test statistic definition, admissibility, combined test
 - `OrderingValidity.lean`: Test validity under H₀ (Prop 3.8)
-- `PowerAnalysis.lean`: MI-equivalence, power direction (Thm 6.1)
+- `PowerAnalysis.lean`: MI-equivalence, power direction (Thm 6.1), SubDAG test validity (Prop 6.3)
 - `NumericalExamples.lean`: Machine-checked chain vs. fork discrimination
 - `BootstrapValidity.lean`: Product-of-conditionals is Markov, bootstrap T ≤ 1
 - `QnStability.lean`: Q_n stability, monotonicity, boundedness, Lipschitz structure

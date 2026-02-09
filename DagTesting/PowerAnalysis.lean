@@ -189,4 +189,37 @@ theorem power_no_rejection (hn : n ≥ 1)
     _ = testStatistic hn G₁ p π₁ h := rfl
     _ ≤ 1 := hT₁
 
+/-!
+## SubDAG Test Validity (Proposition 6.3)
+
+If the true causal structure G₁ is a sub-DAG of the tested DAG G₂
+(i.e., G₂ has all edges of G₁ plus possibly more), then the test
+for G₂ is valid. This is the finite-case analog of Proposition 6.3.
+-/
+
+/-- **Test validity under sub-DAG Markov**: if p is Markov w.r.t. a
+    sub-DAG G₁ ⊆ G₂, then the test for G₂ is valid (T ≤ 1).
+
+    This captures the structural core of Proposition 6.3: testing a DAG G₂
+    that contains all edges of the true DAG G₁ is always valid. The converse
+    (power for detecting missing edges) follows from `power_direction_strict`
+    when the Q_n values differ under different orderings.
+
+    Paper reference: Proposition 6.3 (monotonicity in edge density). -/
+theorem testStatistic_le_one_of_subDAG_markov (hn : n ≥ 1)
+    {G₁ G₂ : FinDAG n} (hsub : G₁.IsSubDAG G₂)
+    (p : JointPMF Ω) (hp : p.IsMarkovDAG G₁)
+    (π : TopologicalOrdering G₂) (h : ∀ i : Fin n, Ω i → ℝ≥0∞) :
+    testStatistic hn G₂ p π h ≤ 1 :=
+  testStatistic_le_one_of_markov hn G₂ p (isMarkovDAG_of_subDAG hsub p hp) π h
+
+/-- Combined test also valid under sub-DAG Markov. -/
+theorem combinedTest_le_one_of_subDAG_markov (hn : n ≥ 1)
+    {G₁ G₂ : FinDAG n} (hsub : G₁.IsSubDAG G₂)
+    (p : JointPMF Ω) (hp : p.IsMarkovDAG G₁)
+    (π : TopologicalOrdering G₂) {K : ℕ}
+    (hs : Fin K → (∀ i : Fin n, Ω i → ℝ≥0∞)) :
+    combinedTestStatistic hn G₂ p π hs ≤ 1 :=
+  combinedTest_le_one_of_markov hn G₂ p (isMarkovDAG_of_subDAG hsub p hp) π hs
+
 end

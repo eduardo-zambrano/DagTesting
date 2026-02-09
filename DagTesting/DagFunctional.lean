@@ -218,4 +218,65 @@ theorem dagCarberyFunctional_marginal_sufficiency (hn : n ≥ 1)
   congr 1
   exact Finset.prod_congr rfl (fun j _ => eq3 j)
 
+/-!
+## SubDAG Properties
+
+Properties of the Markov factorization and Carbery functional under sub-DAG
+relationships. These formalize the structural content of Proposition 6.3
+(monotonicity in edge density).
+-/
+
+/-- **Markov property is preserved under super-DAGs**: if p is Markov w.r.t.
+    a sparser DAG G₁, then it is Markov w.r.t. any denser DAG G₂ ⊇ G₁.
+    (More edges = weaker Markov property = easier to satisfy.)
+
+    Proof: The conditional distributions for G₁ can be extended to G₂
+    by ignoring the additional parent variables.
+
+    Paper reference: Implicit in Section 6 (power analysis). -/
+theorem isMarkovDAG_of_subDAG {G₁ G₂ : FinDAG n} (hsub : G₁.IsSubDAG G₂)
+    (p : JointPMF Ω) (hp : p.IsMarkovDAG G₁) : p.IsMarkovDAG G₂ := by
+  obtain ⟨localCond, h_sum, h_factor⟩ := hp
+  exact ⟨fun i xpa => localCond i (fun ⟨j, hj⟩ => xpa ⟨j, hsub i hj⟩),
+    fun i xpa => h_sum i (fun ⟨j, hj⟩ => xpa ⟨j, hsub i hj⟩),
+    h_factor⟩
+
+/-- **The DAG functional depends only on the permutation, not the DAG**.
+    Two orderings of different DAGs with the same underlying permutation
+    give the same functional value.
+
+    This is because the computation in `dagCarberyFunctional` uses only
+    `π.perm`, not the DAG structure directly. -/
+theorem dagCarberyFunctional_eq_of_perm_eq (hn : n ≥ 1)
+    (G₁ G₂ : FinDAG n) (p : JointPMF Ω)
+    (π₁ : TopologicalOrdering G₁) (π₂ : TopologicalOrdering G₂)
+    (hperm : π₁.perm = π₂.perm) :
+    dagCarberyFunctional hn G₁ p π₁ = dagCarberyFunctional hn G₂ p π₂ := by
+  cases π₁ with | mk σ h₁ =>
+  cases π₂ with | mk σ₂ h₂ =>
+  simp only [TopologicalOrdering.perm] at hperm
+  subst hperm
+  rfl
+
+/-- **Root form also depends only on the permutation**. -/
+theorem dagCarberyRoot_eq_of_perm_eq (hn : n ≥ 1)
+    (G₁ G₂ : FinDAG n) (p : JointPMF Ω)
+    (π₁ : TopologicalOrdering G₁) (π₂ : TopologicalOrdering G₂)
+    (hperm : π₁.perm = π₂.perm) :
+    dagCarberyRoot hn G₁ p π₁ = dagCarberyRoot hn G₂ p π₂ := by
+  simp only [dagCarberyRoot, dagCarberyFunctional_eq_of_perm_eq hn G₁ G₂ p π₁ π₂ hperm]
+
+/-- **For sub-DAGs, the inherited ordering gives the same functional value**.
+
+    If G₁ ⊆ G₂ and π is a valid ordering for G₂, then the functional
+    values for G₁ and G₂ under the corresponding orderings are equal.
+
+    Paper reference: Proposition 6.3 (functional depends on ordering, not DAG). -/
+theorem dagCarberyFunctional_subDAG_eq {G₁ G₂ : FinDAG n}
+    (hsub : G₁.IsSubDAG G₂) (hn : n ≥ 1) (p : JointPMF Ω)
+    (π₂ : TopologicalOrdering G₂) :
+    dagCarberyFunctional hn G₁ p (topologicalOrdering_of_subDAG hsub π₂) =
+    dagCarberyFunctional hn G₂ p π₂ :=
+  dagCarberyFunctional_eq_of_perm_eq hn G₁ G₂ p _ π₂ rfl
+
 end
