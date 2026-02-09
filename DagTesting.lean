@@ -38,6 +38,12 @@ concentration bounds.
 | Bivariate marginal summation | `bivariateAny_sum_snd` | **Proved** |
 | Consecutive pair equivalence | `bivariateAny_eq_bivariateMarginai` | **Proved** |
 | Topological ordering existence | `topologicalOrdering_exists` | **Proved** (via ranking function) |
+| Thm 5.3 (Bootstrap validity) | `bootstrap_validity` | **Proved** (via `isMarkovDAG_of_factorsAs`) |
+| Thm 5.3 (Markov ↔ factorization) | `isMarkovDAG_iff_exists_factorization` | **Proved** |
+| Prop 7.5 (Q_n stability) | `dagCarberyFunctional_continuous_in_marginals` | **Proved** |
+| Prop 7.5 (Q_n monotonicity) | `dagCarberyFunctional_mono` | **Proved** |
+| Prop 7.5 (Q_n boundedness) | `dagCarberyFunctional_le_card` | **Proved** |
+| Root form stability | `dagCarberyRoot_continuous_in_marginals` | **Proved** |
 
 ## Axioms and Sorry Count
 
@@ -61,6 +67,8 @@ concentration bounds.
 - Test statistic ratio identity (T·Q_root = E/N)
 - Power direction theorem (Thm 6.1§2)
 - No false rejection theorem (Thm 6.1§3)
+- Bootstrap validity: product-of-conditionals is Markov (Thm 5.3 core)
+- Q_n stability: monotonicity, boundedness, continuity (Prop 7.5)
 
 ## Files
 
@@ -71,6 +79,8 @@ concentration bounds.
 - `OrderingValidity.lean`: Test validity under H₀ (Prop 3.8)
 - `PowerAnalysis.lean`: MI-equivalence, power direction (Thm 6.1)
 - `NumericalExamples.lean`: Machine-checked chain vs. fork discrimination
+- `BootstrapValidity.lean`: Product-of-conditionals is Markov, bootstrap T ≤ 1
+- `QnStability.lean`: Q_n stability, monotonicity, boundedness, Lipschitz structure
 
 ## Dependencies
 
@@ -91,3 +101,5 @@ import DagTesting.TestStatistic
 import DagTesting.OrderingValidity
 import DagTesting.PowerAnalysis
 import DagTesting.NumericalExamples
+import DagTesting.BootstrapValidity
+import DagTesting.QnStability
