@@ -8,6 +8,13 @@ A Lean 4 formalization of key results from "Testing Causal DAG Structures via Mo
 >
 > Carbery, A. (2004). A multilinear generalisation of the Cauchy-Schwarz inequality. *Proceedings of the AMS*, 132(11), 3141-3152.
 
+## Related Repositories
+
+| Repository | Description |
+|------------|-------------|
+| [dagMI](https://github.com/eduardo-zambrano/dagMI) | R package implementing the methodology |
+| [dagMI-replication](https://github.com/eduardo-zambrano/dagMI-replication) | Replication package for all tables in the paper |
+
 ## Paper-to-Code Correspondence
 
 | Paper Result | Lean Name | File | Status |
