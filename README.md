@@ -144,7 +144,7 @@ This is Carbery's (2004) multilinear Cauchy--Schwarz inequality, a published res
 
 ## Lebesgue vs. Expectation Form
 
-The Lean formalization works with the **Lebesgue (counting-measure) form** of Carbery's inequality, where norms are $L^{n+1}$ norms over finite state spaces. The paper's test statistic uses the **expectation form**, which includes density correction factors $p_i(X_i)^{1/(n+1)}$. The two forms are equivalent via the substitution $f_i = g_i \cdot p_i^{1/(n+1)}$ (Definition 2.9 and Lemma 2.10 in the paper).
+The Lean formalization works with the **Lebesgue (counting-measure) form** of Carbery's inequality, where norms are $L^{n+1}$ norms over finite state spaces. The paper's test statistic uses the **expectation form**, which includes density correction factors $p_i(X_i)^{1/(n+1)}$. The two forms are equivalent via the substitution $f_i = g_i \cdot p_i^{1/(n+1)}$ (Definition 2.10 and Lemma 2.11 in the paper).
 
 ## Citation
 
