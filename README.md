@@ -35,7 +35,7 @@ All theorems are fully proved with **0 sorry's**. The only axiom is Carbery's in
 
 If the data-generating distribution is Markov with respect to a DAG $\mathcal{G}$, the test statistic satisfies $T_h^{\mathcal{G}} \leq 1$ for any admissible test function $h$. This is the core guarantee that the test has correct size.
 
-### Bootstrap validity (Theorem 5.3)
+### Bootstrap validity (Theorem 5.5)
 
 A distribution factorizes according to a DAG's Markov property if and only if it can be written as a product of conditionals. The constrained bootstrap, which resamples from estimated conditionals, therefore generates draws that satisfy the null hypothesis.
 
@@ -53,7 +53,7 @@ $Q_n$ is monotone under marginal dominance, bounded by $|\Omega|^n$, and continu
 
 ## What is Not Formalized
 
-- **Asymptotic distribution theory**: The bootstrap consistency argument (Section 5.2) relies on empirical process theory not available in Mathlib.
+- **Asymptotic distribution theory**: The bootstrap consistency argument (Section 5) relies on empirical process theory not available in Mathlib.
 - **Continuous distributions**: The formalization uses finite state spaces with counting measure. The paper's results hold for continuous distributions with Lebesgue measure; the algebraic structure is identical (sums replace integrals).
 - **Carbery's inequality itself**: Axiomatized as `carberyInequality`. This is a published result (Carbery 2004, Proc. AMS) whose proof involves real-analytic techniques outside the scope of this project.
 
@@ -74,8 +74,8 @@ $Q_n$ is monotone under marginal dominance, bounded by $|\Omega|^n$, and continu
 | Proposition 4.3 (Admissible test functions) | `admissible_of_ennreal` | `TestStatistic.lean` |
 | Proposition 4.7 (Combined test validity) | `combinedTest_le_one_of_markov` | `OrderingValidity.lean` |
 | **Bootstrap & Power** | | |
-| Theorem 5.3 (Bootstrap validity) | `bootstrap_validity` | `BootstrapValidity.lean` |
-| Theorem 5.3 (Markov iff factorization) | `isMarkovDAG_iff_exists_factorization` | `BootstrapValidity.lean` |
+| Theorem 5.5 (Bootstrap validity) | `bootstrap_validity` | `BootstrapValidity.lean` |
+| Theorem 5.5 (Markov iff factorization) | `isMarkovDAG_iff_exists_factorization` | `BootstrapValidity.lean` |
 | Theorem 6.1 (Power direction) | `power_direction_strict` | `PowerAnalysis.lean` |
 | Theorem 6.1 (No false rejection) | `power_no_rejection` | `PowerAnalysis.lean` |
 | Proposition 6.2 (SubDAG validity) | `testStatistic_le_one_of_subDAG_markov` | `PowerAnalysis.lean` |
@@ -128,7 +128,7 @@ DagTesting/
     OrderingValidity.lean      -- T_h <= 1 under H_0
     PowerAnalysis.lean         -- Power direction, MI-equivalence (Theorem 6.1)
     NumericalExamples.lean     -- Machine-checked chain vs. fork discrimination
-    BootstrapValidity.lean     -- Factorization iff Markov (Theorem 5.3)
+    BootstrapValidity.lean     -- Factorization iff Markov (Theorem 5.5)
     QnStability.lean           -- Monotonicity, boundedness, continuity (Prop 7.4)
 ```
 
@@ -153,7 +153,7 @@ The Lean formalization works with the **Lebesgue (counting-measure) form** of Ca
   title={Testing Causal {DAG} Structures via Moment Inequalities},
   author={Zambrano, Eduardo},
   year={2026},
-  journal={Working paper}
+  journal={Under review}
 }
 ```
 

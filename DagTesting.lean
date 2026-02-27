@@ -38,8 +38,8 @@ concentration bounds.
 | Bivariate marginal summation | `bivariateAny_sum_snd` | **Proved** |
 | Consecutive pair equivalence | `bivariateAny_eq_bivariateMarginai` | **Proved** |
 | Topological ordering existence | `topologicalOrdering_exists` | **Proved** (via ranking function) |
-| Thm 5.3 (Bootstrap validity) | `bootstrap_validity` | **Proved** (via `isMarkovDAG_of_factorsAs`) |
-| Thm 5.3 (Markov ↔ factorization) | `isMarkovDAG_iff_exists_factorization` | **Proved** |
+| Thm 5.5 (Bootstrap validity) | `bootstrap_validity` | **Proved** (via `isMarkovDAG_of_factorsAs`) |
+| Thm 5.5 (Markov ↔ factorization) | `isMarkovDAG_iff_exists_factorization` | **Proved** |
 | Prop 7.4 (Q_n stability) | `dagCarberyFunctional_continuous_in_marginals` | **Proved** |
 | Prop 7.4 (Q_n monotonicity) | `dagCarberyFunctional_mono` | **Proved** |
 | Prop 7.4 (Q_n boundedness) | `dagCarberyFunctional_le_card` | **Proved** |
@@ -72,7 +72,7 @@ concentration bounds.
 - Test statistic ratio identity (T·Q_root = E/N)
 - Power direction theorem (Thm 6.1§2)
 - No false rejection theorem (Thm 6.1§3)
-- Bootstrap validity: product-of-conditionals is Markov (Thm 5.3 core)
+- Bootstrap validity: product-of-conditionals is Markov (Thm 5.5 core)
 - Q_n stability: monotonicity, boundedness, continuity (Prop 7.4)
 - SubDAG: ordering inheritance, Markov inheritance, Q_n preservation (Prop 6.2)
 - Test validity under super-DAG of true structure (Prop 6.2)

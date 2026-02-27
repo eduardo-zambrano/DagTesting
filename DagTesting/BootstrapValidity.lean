@@ -22,14 +22,14 @@ is Markov with respect to that DAG, and therefore satisfies T ≤ 1.
 
 ## Referee concern addressed
 
-The referee noted that the bootstrap consistency proof (Theorem 5.3) was too informal.
+The referee noted that the bootstrap consistency proof (Theorem 5.5) was too informal.
 This formalization proves the structural core: any DAG-constrained distribution satisfies
 T ≤ 1, regardless of whether it arises from a bootstrap procedure or any other source.
 This is the key invariant that makes the constrained bootstrap valid.
 
 ## Paper reference
 
-* Theorem 5.3 (Bootstrap consistency) in Zambrano (2026)
+* Theorem 5.5 (Bootstrap consistency) in Zambrano (2026)
 * The structural argument: constrained bootstrap → Markov w.r.t. G → T ≤ 1
 -/
 
@@ -99,7 +99,7 @@ This is the structural core of bootstrap validity.
     The `IsMarkovDAG` definition asks for exactly what `FactorsAs` provides:
     local conditionals that (1) sum to 1, and (2) give the joint as a product.
 
-    Paper reference: This is the structural core of Theorem 5.3. -/
+    Paper reference: This is the structural core of Theorem 5.5. -/
 theorem isMarkovDAG_of_factorsAs (G : FinDAG n) (p : JointPMF Ω)
     (cf : ConditionalFamily G Ω) (hf : p.FactorsAs G cf) :
     p.IsMarkovDAG G :=
@@ -116,7 +116,7 @@ theorem isMarkovDAG_of_factorsAs (G : FinDAG n) (p : JointPMF Ω)
     - By `testStatistic_le_one_of_markov`, they satisfy T ≤ 1
     - Therefore the bootstrap null distribution is stochastically dominated by 1
 
-    Paper reference: Theorem 5.3 (structural core). -/
+    Paper reference: Theorem 5.5 (structural core). -/
 theorem bootstrap_validity (hn : n ≥ 1) (G : FinDAG n) (p : JointPMF Ω)
     (cf : ConditionalFamily G Ω) (hf : p.FactorsAs G cf)
     (π : TopologicalOrdering G) (h : ∀ i : Fin n, Ω i → ℝ≥0∞) :
@@ -126,7 +126,7 @@ theorem bootstrap_validity (hn : n ≥ 1) (G : FinDAG n) (p : JointPMF Ω)
 /-- **Combined Bootstrap Validity**: The combined test also satisfies T_max ≤ 1
     for any constrained bootstrap distribution.
 
-    Paper reference: Follows from Theorem 5.3 + Proposition 4.7. -/
+    Paper reference: Follows from Theorem 5.5 + Proposition 4.7. -/
 theorem bootstrap_combined_validity (hn : n ≥ 1) (G : FinDAG n)
     (p : JointPMF Ω) (cf : ConditionalFamily G Ω) (hf : p.FactorsAs G cf)
     (π : TopologicalOrdering G) {K : ℕ}
